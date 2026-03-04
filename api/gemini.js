@@ -1,26 +1,15 @@
-const fetch = require("node-fetch");
+// api/gemini.js
+export default async function handler(req, res) {
+  const API_KEY = process.env.GEMINI_API_KEY;
 
-module.exports = async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST allowed" });
+  if (!API_KEY) {
+    return res.status(500).json({ error: "API key not set" });
   }
 
-  try {
-    const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.GEMINI_API_KEY}`,
-        },
-        body: JSON.stringify(req.body),
-      }
-    );
+  const response = await fetch('https://api.gemini.com/v1/some-endpoint', {
+    headers: { Authorization: `Bearer ${API_KEY}` },
+  });
 
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+  const data = await response.json();
+  res.status(200).json(data);
+}
