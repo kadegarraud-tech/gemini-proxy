@@ -1,5 +1,7 @@
 // api/gemini.js
-export default async function handler(req, res) {
+const fetch = require('node-fetch');
+
+module.exports = async function handler(req, res) {
   const API_KEY = process.env.GEMINI_API_KEY;
 
   if (!API_KEY) {
@@ -12,4 +14,4 @@ export default async function handler(req, res) {
 
   const data = await response.json();
   res.status(200).json(data);
-}
+};
