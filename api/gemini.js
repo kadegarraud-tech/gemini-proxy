@@ -1,6 +1,6 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST allowed" });
   }
@@ -23,4 +23,4 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
