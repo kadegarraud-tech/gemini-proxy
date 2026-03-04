@@ -11,4 +11,8 @@
       "dest": "/api/$1"
     }
   ]
+}{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
