@@ -1,12 +1,9 @@
 {
   "name": "gemini-proxy",
   "version": "1.0.0",
-  "main": "index.js",
   "engines": {
     "node": "22.x"
   },
-  "license": "ISC",
-  "dependencies": {
-    "node-fetch": "^2.7.0"
-  }
+  "license": "ISC"
+}
 }
