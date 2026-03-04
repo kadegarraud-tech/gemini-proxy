@@ -1,17 +1,12 @@
-// api/gemini.js
 const fetch = require('node-fetch');
 
 module.exports = async function handler(req, res) {
-  const API_KEY = process.env.GEMINI_API_KEY;
+  const API_KEY = process.env.AIzaSyCg5LN6_lm-HpyQIz3_biZGDCsuZzAFQsE;
 
   if (!API_KEY) {
     return res.status(500).json({ error: "API key not set" });
   }
 
-  const response = await fetch('https://api.gemini.com/v1/some-endpoint', {
-    headers: { Authorization: `Bearer ${API_KEY}` },
-  });
-
-  const data = await response.json();
-  res.status(200).json(data);
+  // test response to make sure the endpoint works
+  res.status(200).json({ message: "Hello from Gemini proxy!" });
 };
